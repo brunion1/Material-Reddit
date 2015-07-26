@@ -1,0 +1,15 @@
+      <md-content>
+        <md-list>
+          <md-list-item class="md-3-line" ng-repeat="story in stories track by $index">
+            <img ng-src="{{story.thumbnail}}?{{$index}}" class="md-avatar" alt="{{item.who}}" />
+            <div class="md-list-item-text">
+              <h3>{{ story.title }}</h3>
+              <h4>{{ story.domain }}</h4>
+              <p>{{ item.notes }}</p>
+            </div>
+            <md-divider ></md-divider>
+          </md-list-item>
+        </md-list>
+      </md-content>
+
+<div>test</div>

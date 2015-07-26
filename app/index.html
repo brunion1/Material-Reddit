@@ -26,30 +26,18 @@
               <md-icon md-svg-icon="/img/ic_menu_white_24px.svg"></md-icon>
             </md-button>
             <h2>
-              <span>Reddit With Longer TItle</span>
+              <span>Reddit Material</span>
             </h2>
             <span flex></span>
-            <md-button class="md-icon-button" aria-label="More">
-              <md-icon md-svg-icon="img/ic_more_vert_white_24px.svg"></md-icon>
-            </md-button>
+            <md-switch ng-model="listMode" aria-label="Switch 1">
+                {{mode}}
+            </md-switch>
+
           </div>
         </md-toolbar>
       </md-content>
-        
-      <md-content>
-        <md-list>
-          <md-list-item class="md-3-line" ng-repeat="story in stories track by $index">
-            <img ng-src="{{story.thumbnail}}?{{$index}}" class="md-avatar" alt="{{item.who}}" />
-            <div class="md-list-item-text">
-              <h3>{{ story.title }}</h3>
-              <h4>{{ story.domain }}</h4>
-              <p>{{ item.notes }}</p>
-            </div>
-          </md-list-item>
-          <md-divider ></md-divider>
-        </md-list>
-      </md-content>
-
+    <div ng-if="listMode" ng-include src="'src/partials/list.html'"></div>
+    <div ng-if="!listMode" ng-include src="'src/partials/cardList.html'"></div>
     </div>
         
         
