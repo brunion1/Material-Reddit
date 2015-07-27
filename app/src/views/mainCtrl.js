@@ -5,7 +5,10 @@ app.controller('mainCtrl', function($scope, $http, $mdSidenav, $mdUtil, $mdMedia
     loadStories();
     $scope.listMode = true;
     
-
+    $scope.openLink = function(url){
+      window.open(url, '_blank');
+    };
+    
     $scope.$watch('listMode', function(){
         console.log("Value is now: " + $scope.listMode);
         if($scope.listMode){

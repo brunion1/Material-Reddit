@@ -1,9 +1,8 @@
-  <md-content class="md-padding">
-    <md-card ng-repeat="story in stories track by $index">
-      <img ng-src="{{story.url}}" class="md-card-image" alt="Washed Out">
-      <md-card-content>
-        <h2 class="md-title">{{story.title}}</h2>
-        <p>{{story.domain}}
-        </p>
-      </md-card-content>
-    </md-card>
+<md-card ng-repeat="story in stories track by $index">
+  <img ng-src="{{story.url}}" class="md-card-image" alt="Washed Out">
+  <md-card-content>
+    <h2 class="md-title">{{story.title}}</h2>
+    <p>{{story.domain}}
+    </p>
+  </md-card-content>
+</md-card>

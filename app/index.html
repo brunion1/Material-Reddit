@@ -8,7 +8,7 @@
     <body ng-app="redMat">
         
     <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
-      <md-toolbar class="md-theme-indigo">
+      <md-toolbar class="md-theme-indigo" md-scroll-shrink >
         <h1 class="md-toolbar-tools">Options</h1>
       </md-toolbar>
       <md-content layout-padding ng-controller="LeftCtrl">
@@ -19,7 +19,6 @@
     </md-sidenav>
         
     <div ng-controller="mainCtrl">   
-      <md-content>
         <md-toolbar>
           <div class="md-toolbar-tools">
             <md-button class="md-icon-button" aria-label="Settings" ng-click="toggleLeft()">
@@ -35,13 +34,12 @@
 
           </div>
         </md-toolbar>
-      </md-content>
-    <div ng-if="listMode" ng-include src="'src/partials/list.html'"></div>
-    <div ng-if="!listMode" ng-include src="'src/partials/cardList.html'"></div>
+        <md-content>
+            <div ng-if="listMode" ng-include src="'src/partials/list.html'"></div>
+            <div ng-if="!listMode" ng-include src="'src/partials/cardList.html'"></div>
+        </md-content>
     </div>
         
-        
-    
     <script src="/node_modules/angular/angular.js"></script>
     <script src="/node_modules/angular-aria/angular-aria.js"></script>
     <script src="/node_modules/angular-animate/angular-animate.js"></script>
