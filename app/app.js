@@ -1,4 +1,9 @@
-/**
- * Main AngularJS Web Application
- */
-var app = angular.module('redMat', ['ngMaterial']);
+(function () {
+  'use strict'
+  
+  /**
+   * Main AngularJS Web Application
+   */
+  angular.module('redMat', ['ngMaterial']);
+
+})();
