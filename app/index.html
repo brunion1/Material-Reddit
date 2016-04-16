@@ -18,7 +18,7 @@
       </md-content>
     </md-sidenav>
         
-    <div ng-controller="mainCtrl">   
+    <div ng-controller="mainCtrl as vm">   
         <md-toolbar>
           <div class="md-toolbar-tools">
             <md-button class="md-icon-button" aria-label="Settings" ng-click="toggleLeft()">
@@ -29,7 +29,7 @@
             </h2>
             <span flex></span>
             <md-switch ng-model="listMode" aria-label="Switch 1">
-                {{mode}}
+                {{vm.mode}}
             </md-switch>
 
           </div>
