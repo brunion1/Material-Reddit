@@ -1,3 +1,32 @@
+(function(){
+  'use strict';
+  
+  angular
+    .module('app')
+    .controller('mainCtrl', mainCtrl);
+    
+  mainCtrl.$inject = ['$scope', '$http', '$mdSidenav', '$mdUtil', '$mdMedia'];
+  
+  function mainCtrl($scope, $http, $mdSidenav, $mdUtil, $mdMedia){
+    var vm = this;
+    
+    vm.openLink = openLink;
+    vm.toggleLeft = buildToggler('left');
+    
+    vm.stories = [];
+    loadStories();
+    vm.listMode = true;
+    
+    function openLink(url){
+      window.open(url, '_blank');
+    }
+    
+    
+  }
+  
+})();
+
+
 app.controller('mainCtrl', function($scope, $http, $mdSidenav, $mdUtil, $mdMedia){
     $scope.toggleLeft = buildToggler('left');
 
