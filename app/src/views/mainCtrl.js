@@ -1,40 +1,59 @@
-app.controller('mainCtrl', function($scope, $http, $mdSidenav, $mdUtil, $mdMedia){
-    $scope.toggleLeft = buildToggler('left');
+(function () {
+  'use strict';
 
-    $scope.stories = [];
+  angular
+    .module('app')
+    .controller('mainCtrl', mainCtrl);
+
+  mainCtrl.$inject = ['$scope', '$http', '$mdSidenav', '$mdUtil', '$mdMedia'];
+
+  function mainCtrl($scope, $http, $mdSidenav, $mdUtil, $mdMedia) {
+    var vm = this;
+
+    vm.openLink = openLink;
+    vm.toggleLeft = buildToggler('left');
+
+    vm.stories = [];
     loadStories();
-    $scope.listMode = true;
-    
-    $scope.openLink = function(url){
+    vm.listMode = true;
+
+    function openLink(url) {
       window.open(url, '_blank');
-    };
-    
-    $scope.$watch('listMode', function(){
-        console.log("Value is now: " + $scope.listMode);
-        if($scope.listMode){
-            $scope.mode = "List";
-        }else{
-            $scope.mode = "Card";
-        }
-    }, true);
-    
-    function loadStories(){
-      $http.get('http://www.reddit.com/r/funny/new.json?sort=new')
-      .success(function(response){
-        angular.forEach(response.data.children, function(child){
-          $scope.stories.push(child.data);
-        });
-      console.log($scope.stories);
-      })
     }
-    
-    function buildToggler(navID) {
-      var debounceFn =  $mdUtil.debounce(function(){
-            $mdSidenav(navID)
-              .toggle()
-              .then(function () {
-              });
-          },300);
+
+    function loadStories() {
+      $http.get('http://www.reddit.com/r/funny/new.json?sort=new')
+        .success(function (response) {
+          angular.forEach(response.data.children, function (child) {
+            vm.stories.push(child.data);
+          });
+          console.log(vm.stories);
+        });
+    }
+
+    function buildToggler() {
+      var debounceFn = $mdUtil.debounce(function () {
+        // I'm not real sure what's happening here
+        $mdSidenav(navID)
+          .toggle()
+          .then(function () {
+          });
+      }, 300);
       return debounceFn;
     }
-});
+
+    // Who watches the watchmen?
+    vm.$watch('listMode', function () {
+      console.log("Value is now: " + $scope.listMode); //This propbably needs to be vm.something, but i don't know where it comes from yet
+      if ($scope.listMode) {
+        vm.mode = "List";
+      } else {
+        vm.mode = "Card";
+      }
+    }, true);
+    
+    $scope.$apply();
+    $scope.$apply();
+}
+
+})();
